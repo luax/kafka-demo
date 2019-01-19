@@ -23,5 +23,31 @@ services:
     networks:
       - kafka-net
 
+  consumer:
+    build:
+      context: "."
+      dockerfile: "./Dockerfile"
+      args:
+        - SERVICE_NAME=consumer
+    ports:
+      - "8081:8080"
+    volumes:
+      - ".:/go/src/kafka-demo"
+    networks:
+      - kafka-net
+
+  producer:
+    build:
+      context: "."
+      dockerfile: "./Dockerfile"
+      args:
+        - SERVICE_NAME=producer
+    ports:
+      - "8080:8080"
+    volumes:
+      - ".:/go/src/kafka-demo"
+    networks:
+      - kafka-net
+
 networks:
   kafka-net:
