@@ -35,6 +35,8 @@ services:
       - ".:/go/src/kafka-demo"
     networks:
       - kafka-net
+    depends_on:
+      - kafka
 
   producer:
     build:
@@ -48,6 +50,8 @@ services:
       - ".:/go/src/kafka-demo"
     networks:
       - kafka-net
+    depends_on:
+      - kafka
 
 networks:
   kafka-net:
